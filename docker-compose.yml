@@ -1,6 +1,16 @@
 version: '2.2'
 services:
-  es01:
+  app:
+    container_name: net_research
+    depends_on:
+      - es
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python3 -u main.py
+    networks:
+      - elastic
+  es:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.10.2
     container_name: es
     environment:
@@ -18,14 +28,14 @@ services:
       - elastic
 
 
-  kib01:
+  kib:
     image: docker.elastic.co/kibana/kibana:7.10.2
-    container_name: kib01
+    container_name: kib
     ports:
       - 5601:5601
     environment:
-      ELASTICSEARCH_URL: http://es01:9200
-      ELASTICSEARCH_HOSTS: http://es01:9200
+      ELASTICSEARCH_URL: http://es:9200
+      ELASTICSEARCH_HOSTS: http://es:9200
     networks:
       - elastic
 
