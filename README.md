@@ -8,3 +8,19 @@
  - заголовки
 
 Собранную информацию отправить в elasticsearch
+
+___
+# Запуск
+
+```sh
+docker-compose up -d
+firefox http://localhost:5601
+```
+
+# Остановка
+
+```sh
+docker-compose down -v --rmi local
+```
+
+[![N|Solid](proof.png)]
