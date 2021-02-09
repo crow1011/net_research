@@ -23,4 +23,4 @@ firefox http://localhost:5601
 docker-compose down -v --rmi local
 ```
 
-[![N|Solid](proof.png)]
+[!(proof.png)]
